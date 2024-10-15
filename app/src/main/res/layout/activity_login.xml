@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/login_page"
+    android:orientation="vertical"
+    tools:context=".LoginActivity"
+    android:gravity="center"
+    >
+
+    <TextView
+        android:id="@+id/login_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Войти в аккаунт"
+        android:layout_marginTop="225dp"
+        android:textSize="40dp"
+        />
+
+    <EditText
+        android:id="@+id/user_email"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Введите email/phone"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="15dp"
+        />
+
+    <EditText
+        android:id="@+id/user_password"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Введите пароль"
+        android:layout_marginTop="15dp"
+        />
+    <CheckBox
+        android:id="@+id/login_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Входить автоматически"
+        />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#673AB7"
+        android:text="Войти"
+        android:textSize="30dp" />
+
+</LinearLayout>
