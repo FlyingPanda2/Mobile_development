@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/login_page"
     android:orientation="vertical"
-    tools:context=".LoginActivity"
+    tools:context=".LoginFragment"
     android:gravity="center"
     >
 

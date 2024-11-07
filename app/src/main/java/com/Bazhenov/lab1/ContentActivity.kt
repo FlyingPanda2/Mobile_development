@@ -1,14 +1,15 @@
 package com.Bazhenov.lab1
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.navigation.NavigationView
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class ContentActivity : AppCompatActivity() {
 
@@ -18,10 +19,10 @@ class ContentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_content)
 
-//        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-//
-//        val botttomBar = findViewById<NavigationView>(R.id.bottom_nav)
-//        botttomBar.setupWithNavController(navController)
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+
+        val botttomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        botttomNav.setupWithNavController(navController)
 
     }
 }
