@@ -25,7 +25,7 @@ class LoginFragment: Fragment() {
         val login_status = root.findViewById<CheckBox>(R.id.login_status)
         val storage = requireContext().getSharedPreferences("DataBase", Context.MODE_PRIVATE)
         val login_button = root.findViewById<Button>(R.id.login_button)
-        val user_email_phone = root.findViewById<EditText>(R.id.user_email)
+        val user_email_phone = root.findViewById<EditText>(R.id.email_button)
         val user_password = root.findViewById<EditText>(R.id.user_password)
 
         login_button.setOnClickListener() {
@@ -39,7 +39,7 @@ class LoginFragment: Fragment() {
             ) {
                 if (login_status.isChecked == true) {
                     storage.edit().putBoolean("login_status", login_status.isChecked).apply()
-                    Toast.makeText(activity, login_status.toString(), Toast.LENGTH_SHORT)
+                    Toast.makeText(activity, login_status.toString(), Toast.LENGTH_SHORT).show()
                     navController.navigate(R.id.oneFragment)
                 } else {
                     navController.navigate(R.id.oneFragment)

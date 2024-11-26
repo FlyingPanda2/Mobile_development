@@ -10,10 +10,14 @@ class PhonesAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var mPhonesList: ArrayList<PhoneModel> = ArrayList()
 
-    fun setupPhones(phonesList: ArrayList<PhoneModel>){
-
+    fun setupPhones(phonesList: ArrayList<PhoneModel>, from: Int, to: Int){
         mPhonesList.clear()
-        mPhonesList.addAll(phonesList)
+        //mPhonesList.addAll(phonesList)
+        phonesList.forEach { item ->
+            if (item.scope.toInt() in from..to)
+                mPhonesList.add(item)
+        }
+
         notifyDataSetChanged()
     }
 
@@ -32,15 +36,17 @@ class PhonesAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount(): Int {
         return mPhonesList.count()
     }
-}
 
-class PhonesViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)  {
+    inner class PhonesViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)  {
 
-    fun bind(mPhones: PhoneModel){
+        fun bind(mPhones: PhoneModel){
 
-        itemView.findViewById<TextView>(R.id.phone_name).text = mPhones.name
-        itemView.findViewById<TextView>(R.id.lauch_price).text = mPhones.price
-        itemView.findViewById<TextView>(R.id.lauch_date).text = mPhones.date
-        itemView.findViewById<TextView>(R.id.camera_scope).text = mPhones.scope
+            itemView.findViewById<TextView>(R.id.phone_name).text = mPhones.name
+            itemView.findViewById<TextView>(R.id.lauch_price).text = mPhones.price
+            itemView.findViewById<TextView>(R.id.lauch_date).text = mPhones.date
+            itemView.findViewById<TextView>(R.id.camera_scope).text = mPhones.scope
+        }
     }
 }
+
+

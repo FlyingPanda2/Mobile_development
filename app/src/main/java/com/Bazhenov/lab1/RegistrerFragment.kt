@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
+import com.google.firebase.auth.FirebaseAuth
 
 class RegisterFragment: Fragment() {
     override fun onCreateView(
@@ -26,7 +28,7 @@ class RegisterFragment: Fragment() {
         val num_button = root.findViewById<Button>(R.id.phone_num_button)
         val email_button = root.findViewById<Button>(R.id.email_button)
         val user_email_num = root.findViewById<EditText>(R.id.user_email)
-        val user_password = root.findViewById<EditText>(R.id.user_password)
+        val user_password = root.findViewById<EditText>(R.id.user_pasword)
         val reg_button = root.findViewById<Button>(R.id.reg_button)
         val storage = requireContext().getSharedPreferences("DataBase", Context.MODE_PRIVATE)
 
@@ -65,14 +67,21 @@ class RegisterFragment: Fragment() {
             }
 
             else{
-                if(user_email_num.hint == "Введите email"){
-                    storage.edit().putString("email", user_email_num.text.toString()).apply()
+                val auth = FirebaseAuth.getInstance()
+
+                Log.e("fb_task", "qwe ${auth.app}")
+                auth.createUserWithEmailAndPassword(user_email_num.text.toString(),
+                    user_password.text.toString()).addOnCompleteListener { task ->
+                        Log.e("fb_task", "${task.result}")
+                    if (task.isSuccessful)
+                        navController.navigate(R.id.oneFragment)
+                    }.addOnFailureListener{ exeption ->
+                    Log.e("fb_task", "${exeption}")
+                        Toast.makeText(requireContext(), exeption.localizedMessage, Toast.LENGTH_LONG).show()
+
+                    }.addOnCanceledListener {
+                        Log.e("fb_task", "camcel")
                 }
-                else if(user_email_num.hint == "Введите телефон"){
-                    storage.edit().putString("phone", user_email_num.text.toString()).apply()
-                }
-                storage.edit().putString("password", user_password.text.toString()).apply()
-                navController.navigate(R.id.oneFragment)
             }
         }
         return root

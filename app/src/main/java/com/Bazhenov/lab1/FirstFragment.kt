@@ -25,6 +25,6 @@ class FirstFragment : Fragment() {
     }
 
     private fun loadData(){
-        myAdapter.setupPhones(PhonesData.phonesArr)
+        myAdapter.setupPhones(PhonesData.phonesArr, 145, 147)
     }
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "850629145868",
+    "project_id": "phonerating-dcae2",
+    "storage_bucket": "phonerating-dcae2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850629145868:android:d49b824604d80cc0274529",
+        "android_client_info": {
+          "package_name": "com.Bazhenov.lab1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZyand4oheMvb5ewL1wQxxMX0KYn2Mj0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
